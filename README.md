@@ -65,4 +65,6 @@ via Gradient-based Localization](https://arxiv.org/pdf/1610.02391.pdf)
 
 ## Demo
 
-TODO
+A small dive into the UI and the usage of the app:
+
+![](demo/demo.gif)
