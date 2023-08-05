@@ -27,7 +27,3 @@ class SimpleMNISTClassifier(nn.Module):
         x = self.fc_1(x)
         return x
     
-
-if __name__ == "__main__":
-    model = SimpleMNISTClassifier((3, 28, 28), 10)
-    print(model)

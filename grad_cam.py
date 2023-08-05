@@ -143,10 +143,3 @@ def gradcam(file, write_path="data/gradcam_out/"):
     return superimposed_img, heatmap, preds.numpy()[0]
 
 
-if __name__ == "__main__":
-    sup_img, heatmap, recognized_digit = gradcam("data/mnist_png/train/0/209.png")
-
-    plt.matshow(heatmap)
-    plt.show()
-    plt.imshow(sup_img)
-    plt.show()
