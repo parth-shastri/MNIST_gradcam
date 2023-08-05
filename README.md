@@ -68,3 +68,7 @@ via Gradient-based Localization](https://arxiv.org/pdf/1610.02391.pdf)
 A small dive into the UI and the usage of the app:
 
 ![](demo/demo.gif)
+
+## License
+
+This project is licensed under the [MIT License.](LICENSE)
