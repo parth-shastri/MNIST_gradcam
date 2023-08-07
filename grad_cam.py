@@ -129,17 +129,21 @@ def gradcam(file, write_path="data/gradcam_out/"):
     resized_heatmap = resized_heatmap.astype("uint8")
     resized_heatmap = cv2.applyColorMap(resized_heatmap, cv2.COLORMAP_JET)
     # resized_heatmap = cv2.cvtColor(resized_heatmap, cv2.COLOR_BGR2RGB)
-    image_rgb = cv2.cvtColor(np.array(image.squeeze()), cv2.COLOR_GRAY2BGR)
-    superimposed_img = resized_heatmap * 0.4 + img * 0.6
-
-    print(resized_heatmap.max(), resized_heatmap.min())
-
+    image_rgb = cv2.cvtColor(np.array(image.squeeze()), cv2.COLOR_GRAY2BGR) * 255
+    superimposed_img = resized_heatmap[..., ::-1] * 0.4 + image_rgb.astype("uint8")
     # superimposed_img = superimposed_img.astype('uint8')
-    plt.imshow(image_rgb)
+    # print(image_rgb.max(), image_rgb.min())
 
     if write_path is not None:
         cv2.imwrite(os.path.join(write_path, "img_class_{}.png".format(preds[0].numpy())), img=superimposed_img)
     
-    return superimposed_img, heatmap, preds.numpy()[0]
+    return superimposed_img / 255, heatmap, preds.numpy()[0]
 
 
+if __name__ == "__main__":
+    sup_img, heatmap, recognized_digit = gradcam("data/mnist_png/train/6/218.png")
+
+    plt.matshow(heatmap)
+    plt.show()
+    plt.imshow(sup_img)
+    plt.show()
