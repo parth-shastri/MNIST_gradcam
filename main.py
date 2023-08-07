@@ -3,6 +3,7 @@ import cv2
 import numpy as np
 from grad_cam import gradcam
 from streamlit_drawable_canvas import st_canvas
+from PIL import Image
 
 
 st.title("Digit Recognition with GradCAM")
@@ -49,6 +50,8 @@ if st.button("Recognize"):
 
     # col1, col2 = st.beta_columns(2)
     if img_array.sum() != 0:
+        # read_sup_img = Image.open("data/gradcam_out/img_class_{}.png".format(recognized_digit))
+        # read_sup_img = np.array(read_sup_img)
         st.image([img_array, sup_img], caption=['Drawn Image', 'GradCAM'], clamp=True, width=338)
 
         st.subheader("Recognized Digit:")
