@@ -89,8 +89,9 @@ def gradcam(file, write_path="data/gradcam_out/"):
     # print(image.shape)
 
     model = SimpleMNISTClassifier(input_dim=(1, 28, 28), num_classes=10)
+    print(model)
     
-    grad_cam_model = GRADCAM_Model(model, saved_path="models/mnist_10_05-08-23 16-09.pt")
+    grad_cam_model = GRADCAM_Model(model, saved_path="models/mnist_10_es_09-08-23 14-17.pt")
     grad_cam_model.eval()
 
     logits = grad_cam_model(image.unsqueeze(0))
@@ -141,7 +142,7 @@ def gradcam(file, write_path="data/gradcam_out/"):
 
 
 if __name__ == "__main__":
-    sup_img, heatmap, recognized_digit = gradcam("data/mnist_png/train/6/218.png")
+    sup_img, heatmap, recognized_digit = gradcam("data/mnist_png/valid/1/824.png")
 
     plt.matshow(heatmap)
     plt.show()
